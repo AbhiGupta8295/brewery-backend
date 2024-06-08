@@ -16,7 +16,7 @@ const app = express();
 const port = process.env.PORT || 5001; 
 
 // Middleware
-app.use(cors());
+app.use(cors({origin: 'http://localhost:5001'}));
 app.use(bodyParser.json());
 app.use(express.json());
 const router = express.Router();
@@ -122,9 +122,9 @@ router.post('/users/signup', async (req, res) => {
     }
   });
 
-  app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-  });
+  // app.listen(port, () => {
+  //   console.log(`Server is running on http://localhost:${port}`);
+  // });
 
   app.use('/.netlify/functions/api',router);
 
